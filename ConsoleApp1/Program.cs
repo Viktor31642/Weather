@@ -1,24 +1,38 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-public class WeatherService
+class Program
 {
-    public async Task<string> GetWeatherAsync(string city)
+    static async Task Main()
     {
-        string apiKey = "test_key";
-        string baseUrl = "https://api.openweathermap.org/data/2.5";
-        string url = baseUrl + "/weather?q=" + city + "&appid=" + apiKey + "&units=metric";
-        
-        
-        using HttpClient client = new HttpClient();
-        Console.WriteLine("Requesting URL: " + url);
-        var response = await client.GetAsync(url);
-        Console.WriteLine("Requesting URL: " + url);
-       
-        return "Ok";
+        var weatherService = new WeatherService();
+        var builder = new ConfigurationBuilder();
+        builder.AddJsonFile("appsettings.json");
+        IConfiguration config = builder.Build();
+        IConfigurationSection section = config.GetSection("WeatherApi");
+        string apiKey = section["ApiKey"];
 
+        while (true)
+        {
+            Console.WriteLine("The Weather Cheker");
+            Console.WriteLine("Enter your city:");
+            string city = Console.ReadLine();
+
+            string result = await weatherService.GetWeatherAsync(city, apiKey);
+            Console.WriteLine("Service result: " + result);
+
+            Console.WriteLine("Do you want to check another city? (yes/no)");
+            string response = Console.ReadLine().Trim().ToLower();
+
+            if (response == "no")
+            {
+                Console.WriteLine("Goodbye!");
+                break;
+            }
+
+            if (response != "yes")
+            {
+                continue;
+            }
+        }
     }
-
 }
-    }
-}
-
