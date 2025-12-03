@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.Configuration;
 
 public class WeatherService
 {
@@ -22,41 +19,6 @@ public class WeatherService
     }
 
 }
-
-class Program
-{
-    static void Main()
-    {
-        string city = "Lviv";
-        var WeatherService = new WeatherService();
-        WeatherService.GetWeatherAsync(city);
-
-        //while (true)
-        //{
-        //    Console.WriteLine("The Weather Cheker");
-        //    Console.WriteLine("Enter your city:");
-        //    //string city = Console.ReadLine();
-        //    Console.WriteLine(city);
-
-
-
-        //    Console.WriteLine("Do you want to check another city? (yes/no)");
-        //    string response = Console.ReadLine().Trim().ToLower();
-
-
-
-
-        //    if (response == "no")
-        //    {
-        //        Console.WriteLine("Goodbye!");
-        //        break;
-        //    }
-
-        //    if (response != "yes")
-        //    {
-        //        continue;
-        //    }
-        //}
     }
 }
 
