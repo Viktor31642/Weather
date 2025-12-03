@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="ConsoleApp1/WeatherApp.csproj" />
+  <Project Path="WeatherApp.Tests/WeatherApp.Tests.csproj" Id="55b5a303-d758-4253-b71d-57060ace5b11" />
 </Solution>
