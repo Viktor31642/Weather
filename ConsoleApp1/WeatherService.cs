@@ -3,10 +3,10 @@ using System.Text.Json;
 
 public class WeatherService
 {
-    public async Task<string> GetWeatherAsync(string city, string apiKey)
+    public async Task<string> GetWeatherAsync(string baseUrl, string city, string apiKey)
     {
-        string baseUrl = "https://api.openweathermap.org/data/2.5";
         string url = baseUrl + "/weather?q=" + city + "&appid=" + apiKey + "&units=metric";
+        Console.WriteLine(url);
         using HttpClient client = new HttpClient();
         try
         {

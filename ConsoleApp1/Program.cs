@@ -9,6 +9,7 @@ class Program
         builder.AddJsonFile("appsettings.json");
         IConfiguration config = builder.Build();
         IConfigurationSection section = config.GetSection("WeatherApi");
+        string baseUrl = section["baseUrl"];
         string apiKey = section["ApiKey"];
 
         while (true)
@@ -16,8 +17,7 @@ class Program
             Console.WriteLine("The Weather Cheker");
             Console.WriteLine("Enter your city:");
             string city = Console.ReadLine();
-
-            string result = await weatherService.GetWeatherAsync(city, apiKey);
+            string result = await weatherService.GetWeatherAsync(baseUrl, city, apiKey);
             Console.WriteLine("Service result: " + result);
 
             Console.WriteLine("Do you want to check another city? (yes/no)");
