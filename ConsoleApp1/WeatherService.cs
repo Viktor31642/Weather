@@ -6,7 +6,6 @@ public class WeatherService
     public async Task<string> GetWeatherAsync(string baseUrl, string city, string apiKey)
     {
         string url = baseUrl + "/weather?q=" + city + "&appid=" + apiKey + "&units=metric";
-        Console.WriteLine(url);
         using HttpClient client = new HttpClient();
         try
         {
